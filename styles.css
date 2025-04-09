@@ -423,15 +423,19 @@ body {
         transform: scale(1) rotate(0);
     }
 }
+.eyN9UZ_85176f7ad5dd05cd2a8a:hover {
+    backdrop-filter: blur(10px);
+}
 .eyN9UZ_85176f7ad5dd05cd2a8a {
     margin-bottom: -100px !important;
     opacity: 0 !important;
-    transition: opacity 3s, margin-bottom 2.4s;
+    transition: opacity 3s, margin-bottom 2.4s, backdrop-filter 0.8s;
 }
 .aw0RW2_13307e85a9f2f85643fd {
     margin-bottom: 0 !important;
     opacity: 1 !important;
     pointer-events: all;
+    box-shadow: rgba(0, 0, 0, 0.2) 5px 5px 5px;
 }
 .a1Lcy9_e606f195670897bc74a6 {
     height: 100%;
