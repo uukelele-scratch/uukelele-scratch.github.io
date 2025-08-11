@@ -146,11 +146,12 @@
                             </div>-->
                         </div>
 
-                        <div class="div4">
+                        <div class="div4" id="projects-outerdiv" style="padding-top: 0;">
                             <div class="div5">
+                                <svg id="scroll-arrow" xmlns="http://www.w3.org/2000/svg" style="opacity: 0; transition: opacity 0.3s ease;" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down-icon lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg>
                                 <div class="topcontainer false">
-                                    <h1 class="titlecontainer false">projects</h1>
-                                    <h3 class="subtitlecontainer">what i'm working on</h3>
+                                    <h1 class="titlecontainer false" id="projects">projects</h1>
+                                    <h3 class="subtitlecontainer" id="wiwo">what i'm working on</h3>
                                 </div>
                                 <div class="midboxoutercontainer">
                                     <div class="midboxinnercontainer">
@@ -241,5 +242,46 @@
                 </div>
             </div>
         </div>
+        <script>
+            const projectsOuterDiv = document.getElementById("projects-outerdiv");
+            const indicator = document.getElementById("scroll-arrow");
+            const nextSection = document.getElementById("wiwo");
+
+            const updateVisibility = () => {
+                if (isVisible(nextSection)) {
+                    indicator.style.opacity = "0"; // fade out
+                    indicator.style.pointerEvents = "none"; // make it unclickable
+                } else {
+                    indicator.style.opacity = "1"; // fade in
+                    indicator.style.pointerEvents = "auto";
+                }
+            }
+
+            window.addEventListener("scroll", updateVisibility);
+
+            function isVisible(el) {
+                const rect = el.getBoundingClientRect();
+                return (
+                    rect.top < window.innerHeight &&
+                    rect.bottom > 0
+                );
+            }
+
+            updateVisibility();
+
+            window.addEventListener("DOMContentLoaded", ()=>{
+                if (!isVisible(projectsOuterDiv)) {
+                    // console.log("Please scroll!");
+                    centerBox = document.querySelector(".centered");
+                    const el = document.createElement("p")
+                    el.innerText = "Scroll down!";
+                    centerBox.insertAdjacentElement('afterend', el);
+                    const mb = window.getComputedStyle(centerBox).marginBottom;
+                    centerBox.style.marginBottom = '0';
+                    el.style.marginBottom = mb;
+                    el.style.color = 'white';
+                }
+            })
+        </script>
     </body>
 </html>
